@@ -7,11 +7,11 @@ if [ "$#" -lt 1 ]; then
 fi
 
 # Save meta data
-hash=$(md5sum $1)
+hash=$(md5sum $1 | cut -d " " -f1)
 newName=$1-$(date +"%Y%m%d%H%M%S")
 
 # Copy file
 cp $1 $newName
 
 # Print details to file
-echo "$(date +"%Y-%m-%d %H:%M:%S") | $hash | $newName" >> CHANGELOG.md
+echo "$(date +"%Y-%m-%d %H:%M:%S") | Create backup | $hash | $newName" >> CHANGELOG.md
